@@ -9,6 +9,15 @@ export default class AddTodo extends Component {
         };
     }
 
+    addTodo = (text) => {
+        const { handleAddTodo } = this.props;
+        handleAddTodo(text);
+
+        this.setState({
+            text: '',
+        });
+    }
+
     changeText = (e) => {
         this.setState({
             text: e.target.value,
@@ -27,7 +36,7 @@ export default class AddTodo extends Component {
                     value={text}
                 />
                 {' '}
-                <Button bsStyle="primary">Add</Button>
+                <Button bsStyle="primary" onClick={() => this.addTodo(text)}>Add</Button>
                 {' '}
                 <Button bsStyle="info">Load From Server</Button>
             </Form>

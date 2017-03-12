@@ -11,12 +11,25 @@ export default class App extends Component {
         };
     }
 
+    handleAddTodo = (text) => {
+        const { todos } = this.state;
+
+        this.setState({
+            todos: [
+                ...todos,
+                { text }
+            ]
+        });
+    }
+
     render() {
         const { todos } = this.state;
 
         return (
             <div className="container">
-                <AddTodo />
+                <AddTodo 
+                    handleAddTodo={this.handleAddTodo}
+                />
                 <TodoList 
                     todos={todos}
                 />
