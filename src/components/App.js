@@ -22,6 +22,17 @@ export default class App extends Component {
         });
     }
 
+    handleRemoveTodo = (idx) => {
+        const { todos } = this.state;
+
+        this.setState({
+            todos: [
+                ...todos.slice(0, idx),
+                ...todos.slice(idx + 1),
+            ]
+        });
+    }
+
     render() {
         const { todos } = this.state;
 
@@ -32,6 +43,7 @@ export default class App extends Component {
                 />
                 <TodoList 
                     todos={todos}
+                    handleRemoveTodo={this.handleRemoveTodo}
                 />
             </div>
         );

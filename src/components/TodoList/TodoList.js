@@ -7,7 +7,7 @@ export default class TodoList extends Component {
     }
 
     render() {
-        const { todos } = this.props;
+        const { todos, handleRemoveTodo } = this.props;
 
         return (
             <Table bordered>
@@ -28,7 +28,7 @@ export default class TodoList extends Component {
                                 {todo.text}
                             </td>
                             <td className="text-center">
-                                <Button bsStyle="danger">X</Button>
+                                <Button bsStyle="danger" onClick={() => handleRemoveTodo(idx)}>X</Button>
                             </td>
                         </tr>)
                     )}
