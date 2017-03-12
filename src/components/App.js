@@ -6,13 +6,20 @@ import TodoList from './TodoList/TodoList';
 export default class App extends Component {
     constructor() {
         super();
+        this.state = {
+            todos: [],
+        };
     }
 
     render() {
+        const { todos } = this.state;
+
         return (
             <div className="container">
                 <AddTodo />
-                <TodoList />
+                <TodoList 
+                    todos={todos}
+                />
             </div>
         );
     }
