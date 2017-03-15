@@ -1,49 +1,33 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import AddTodo from './components/AddTodo/AddTodo';
 import TodoList from './components/TodoList/TodoList';
+import * as todoAction from '../redux/todo/todoAction';
 
+@connect(
+    (state) => ({
+        todos: state.todoReducer,
+    }), { 
+        ...todoAction 
+    }
+)
 export default class App extends Component {
     constructor() {
         super();
-        this.state = {
-            todos: [],
-        };
-    }
-
-    handleAddTodo = (text) => {
-        const { todos } = this.state;
-
-        this.setState({
-            todos: [
-                ...todos,
-                { text }
-            ]
-        });
-    }
-
-    handleRemoveTodo = (idx) => {
-        const { todos } = this.state;
-
-        this.setState({
-            todos: [
-                ...todos.slice(0, idx),
-                ...todos.slice(idx + 1),
-            ]
-        });
     }
 
     render() {
-        const { todos } = this.state;
+        const { todos, addTodo, removeTodo } = this.props;
 
         return (
             <div className="container">
                 <AddTodo 
-                    handleAddTodo={this.handleAddTodo}
+                    handleAddTodo={addTodo}
                 />
                 <TodoList 
                     todos={todos}
-                    handleRemoveTodo={this.handleRemoveTodo}
+                    handleRemoveTodo={removeTodo}
                 />
             </div>
         );
