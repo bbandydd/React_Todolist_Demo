@@ -18,12 +18,13 @@ export default class App extends Component {
     }
 
     render() {
-        const { todos, addTodo, removeTodo } = this.props;
+        const { todos, addTodo, removeTodo, loadFromServer } = this.props;
 
         return (
             <div className="container">
                 <AddTodo 
                     handleAddTodo={addTodo}
+                    loadFromServer={loadFromServer}
                 />
                 <TodoList 
                     todos={todos}

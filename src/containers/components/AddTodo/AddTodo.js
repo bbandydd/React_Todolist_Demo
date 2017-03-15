@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Form, FormControl, Button } from 'react-bootstrap';
 import fetch from 'isomorphic-fetch';
 
-const getData = (url) => fetch(url).then(response => response.json());
-
 export default class AddTodo extends Component {
     constructor() {
         super();
@@ -27,16 +25,9 @@ export default class AddTodo extends Component {
         });
     }
 
-    loadFromServer = async () => {
-        const { handleAddTodo } = this.props;
-
-        const url = 'https://bbandydd.github.io/React_Redux_Todolist/initial.json';
-        const data = await getData(url);
-        data.forEach(todo => handleAddTodo(todo.text));
-    }
-
     render() {
         const { text } = this.state;
+        const { loadFromServer } = this.props;
 
         return (
             <Form inline>
@@ -49,7 +40,7 @@ export default class AddTodo extends Component {
                 {' '}
                 <Button bsStyle="primary" onClick={() => this.addTodo(text)}>Add</Button>
                 {' '}
-                <Button bsStyle="info" onClick={this.loadFromServer}>Load From Server</Button>
+                <Button bsStyle="info" onClick={loadFromServer}>Load From Server</Button>
             </Form>
         );
     }
