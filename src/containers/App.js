@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import AddTodo from './components/AddTodo/AddTodo';
-import TodoList from './components/TodoList/TodoList';
+import AddTodo from './components/AddTodo';
+import TodoList from './components/TodoList';
 import * as todoAction from '../redux/todo/todoAction';
 
 @connect(
