@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Table, Button } from 'react-bootstrap';
 
 export default class TodoList extends Component {
-    constructor() {
-        super();
+    componentDidMount() {
+        this.props.loadFromServer();
     }
 
     render() {

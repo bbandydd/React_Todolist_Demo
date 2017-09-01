@@ -9,7 +9,7 @@ import * as todoAction from '../redux/todo/todoAction';
     (state) => ({
         todos: state.todoReducer,
     }), { 
-        ...todoAction 
+        ...todoAction
     }
 )
 export default class App extends Component {
@@ -28,6 +28,7 @@ export default class App extends Component {
                 />
                 <TodoList 
                     todos={todos}
+                    loadFromServer={loadFromServer}
                     handleRemoveTodo={removeTodo}
                 />
             </div>
